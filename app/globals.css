@@ -1,0 +1,297 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #e8e8f0;
+  --card: #151520;
+  --border: #2a2a3a;
+  --primary: #7dd3fc;
+  --secondary: #c0c5ce;
+  --accent: #60a5fa;
+  --success: #86efac;
+  --radius: 16px;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-display: "Orbitron", sans-serif;
+
+  /* Metallic geometric color palette inspired by logo */
+  --color-background: #0a0a0f;
+  --color-foreground: #e8e8f0;
+  --color-card-bg: #151520;
+
+  /* Metallic silver/chrome accents */
+  --color-chrome: #c0c5ce;
+  --color-silver: #8b92a3;
+  --color-steel: #4a4f5e;
+  --color-obsidian: #1c1c28;
+
+  /* Accent for active states */
+  --color-primary: #7dd3fc;
+  --color-accent: #60a5fa;
+  --color-success: #86efac;
+  --color-border: #2a2a3a;
+
+  --radius: 0;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+    /* Updated background gradient to match intro site */
+    background: linear-gradient(135deg, #000000 0%, #0a0a1f 25%, #1a0a2e 50%, #0a0a1f 75%, #000000 100%);
+    background-attachment: fixed;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  /* Geometric animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes metallic-shine {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes geometric-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Added slide-down animation for mobile menu */
+  @keyframes slide-down {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@layer components {
+  /* Metallic geometric card with angular design */
+  .card-modern {
+    @apply bg-card border border-border relative overflow-hidden;
+    clip-path: polygon(
+      0 8px,
+      8px 0,
+      calc(100% - 8px) 0,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      0 calc(100% - 8px)
+    );
+  }
+
+  .card-modern::before {
+    content: "";
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: linear-gradient(135deg, transparent 0%, rgba(124, 211, 252, 0.1) 50%, transparent 100%);
+  }
+
+  .card-modern:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Updated button base styles to use consistent sizing with inline-flex for proper height */
+  .btn-primary {
+    @apply inline-flex items-center justify-center font-bold uppercase tracking-wider;
+    @apply bg-gradient-to-r from-primary via-accent to-primary;
+    @apply text-background relative overflow-hidden;
+    @apply transition-all duration-300 active:scale-95;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+    clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+    background-size: 200% auto;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-position: right center;
+    @apply shadow-lg shadow-primary/30;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-bold uppercase tracking-wider;
+    @apply border-2 border-secondary text-secondary;
+    @apply bg-transparent hover:bg-secondary/10;
+    @apply transition-all duration-300 active:scale-95;
+    clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+  }
+
+  /* Glass panel with metallic border */
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border;
+    @apply relative;
+    clip-path: polygon(
+      0 12px,
+      12px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+  }
+
+  /* Metallic stat value styling */
+  .stat-value {
+    @apply text-4xl font-bold bg-gradient-to-br from-chrome via-foreground to-silver bg-clip-text text-transparent;
+    font-family: "Orbitron", sans-serif;
+  }
+
+  .stat-label {
+    @apply text-xs text-steel uppercase tracking-widest font-bold;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-metallic-shine {
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: metallic-shine 3s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-slide-in {
+    animation: slide-in-bottom 0.4s ease-out forwards;
+  }
+
+  .animate-fade-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out forwards;
+  }
+
+  /* Added animation utility for mobile menu */
+  .animate-slide-down {
+    animation: slide-down 0.3s ease-out;
+  }
+}
